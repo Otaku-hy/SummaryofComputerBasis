@@ -10,7 +10,7 @@
 
    ​	编译器将函数名统一改为：
 
-   命名空间/类名长度 + 命名空间/类名(常量函数/Volatile函数时类名前加+K/V) + 函数名长度 + 函数名 + 各参数名
+   命名空间/类名长度 + 命名空间/类名(常量函数/Volatile函数时类名前加+K/V) + 函数名长度 + 函数名 + 各参数类型
 
    比如：
 
@@ -45,8 +45,10 @@
 
    a. 模版函数
 
-   ​	编译器通过根据模版参数(typename)编译出不同名的函数，调用则调用这些不同名的函数:
+   ​	编译器通过根据模版参数(typename, 变量值)编译出不同名的函数，调用则调用这些不同名的函数:
 
+   在函数参数类型前增加：模板中的非类型值(如bool N：bn, int N: in) + 模板中的类型值  然后是其余的普通参数类型
+   
    ```c++
    template<typename T,typename T2>
    void process(T data,T2 other,int a)
@@ -54,10 +56,18 @@
        data++;
    }
    
+   template<bool debug,typename T>
+   void process(int a,T b)
+   {
+       if(debug)
+           a++;
+   }
+   
    process(1,1,1); //函数名：__Z7processIiiEvT_T0_i
    process(1.0,1,1); //函数名： __Z7processIdiEvT_T0_i
+   process<false>(0,1); //函数名： __Z7processILb0EiEviT0_
    ```
-
+   
    b. 类模板
-
+   
    ​	
