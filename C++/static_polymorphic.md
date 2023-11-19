@@ -47,7 +47,7 @@
 
    ​	编译器通过根据模版参数(typename, 变量值)编译出不同名的函数，调用则调用这些不同名的函数:
 
-   在函数参数类型前增加：模板中的非类型值(如bool N：bn, int N: in) + 模板中的类型值  然后是其余的普通参数类型
+   在函数参数类型前增加：模板中的非类型值(如bool N：bn, int N: in, typename T: i/d) + 模板中的类型值  然后是其余的普通参数类型
    
    ```c++
    template<typename T,typename T2>
@@ -70,4 +70,33 @@
    
    b. 类模板
    
-   ​	
+   ​	对于类模版，编译器对于类成员函数编译出不同类型的函数名，同时对于类虚标也编译出不同的名字，具体为在类名后，函数名前，将模版参数类型填入，具体内容参考函数模版
+   
+   ```c++
+   template<typename T>
+   class A
+   {
+   public:
+       T data;
+       virtual void func(T data);
+   };
+   
+   template<typename T>
+   class B : public A<T>
+   {
+   public:
+       T data;
+       virtual void func(T data) override;
+   };
+   
+     a.func(1); //函数名：_ZN1BIiE4funcEi
+   	B类虚表：   //虚表名： __ZTV1BIiE
+     vtable for B<int>:
+           .quad   0
+           .quad   typeinfo for B<int>
+           .quad   B<int>::func(int)
+   ```
+   
+   
+   
+   
