@@ -28,9 +28,9 @@
 
 ​	在运行时，首先在变量构造阶段，构造函数将虚表地址放入对象头部。在调用虚函数时，如果使用的是普通对象调用，则链接期会直接把这个函数调用直接转化为对应的函数地址，而如果使用的是指针或引用对象调用，则会通过虚表中函数地址项进行定位：
 
-![non_pointer](F:\SummaryofComputerBasis\C++\images\non_pointer.png)
+![non_pointer](.\SummaryofComputerBasis\C++\images\non_pointer.png)
 
-![pointer](F:\SummaryofComputerBasis\C++\images\pointer.png)
+![pointer](.\SummaryofComputerBasis\C++\images\pointer.png)
 
 2. vtable详细解读：
 
@@ -45,13 +45,13 @@
    而再typeinfo中包含了用于RTTI的信息：
 
    	1. 指向type_info方法的辅助类虚表的指针 
-	
+		
    	（没有父类的基础类继承于`_class_type_info`；基础类指针继承自`__pointer_type_info`；
-	
+		
    	单一继承类继承自`__si_class_type_info`；多继承类继承自`__vmi_class_type_info`）
-	
+		
    	2. 指向类名的指针
-	
+		
    	3. 指向父类typeinfo的指针	
 
    ![image-20231120122855553](./images/vtable_4.png)
