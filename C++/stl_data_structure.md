@@ -36,3 +36,26 @@ STL:
 
 4. hash
 
+   哈希表是一种基于数组的支持快速查找的数据结构，通过将key转化为index（通过hash function），hash table允许直接访问数据。
+
+   但是由于hash table大小有限，即使是无冲突的hash function也不能保证可以在数组大小的范围内使得所有数据映射出的index都不同，所以还需要解决hash conflict的方法：
+
+   a. **开放地址法**：寻找其他位置存放conflict数据
+
+   ​	linear probing：顺序向下找到第一个空闲的位置存放数据
+
+   ​	square probing: 每次向下移动$i^2$，找到空闲位置
+
+   ​	double hashing: 使用另一个hash function作为移动步长的选择函数
+
+   ​	**注：为了使double hashing得出的步长可以遍历整个table，需要表长是个质数
+
+   b. **链表法**：将每个hash entry设置为链表，在链表中查找元素是否出现
+
+   **Graphcis常用方法：结合linear probling & double hashing & list
+
+   ​	插入：首先第一个hash function对应了一个大的hash entry，这个entry实际上还是一个数组。接着secondary hash function生成关于个这个数据的checksum，遍历数组找出未存储数据的位置i将该数据存入，并且checksum[i] = hash(data)
+
+   ​	查找：用first hash function找到entry，接着循环遍历entry数组，根据secondary hash确定这些数组中每一项所存储的数据的hash value(使用checksum存储的）是否和我们要查找的一致，如一致则返回
+
+   ​		
