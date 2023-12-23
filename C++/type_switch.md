@@ -24,7 +24,7 @@
    Derived* pd = dynamic_cast<Derived*>(pb);
    ```
 
-   Derived的type_info在编译器会生成，pb所指向对象的type_info通过vptr访问虚表获得。比较通过pb所指向的对象的type_info是否能转化为<>内给定的type_info。如能则进行转化，返回Derived*，否则返回bad_typeid
+   Derived的type_info在编译器会生成，pb所指向对象的type_info通过vptr访问虚表获得。比较通过pb所指向的对象的type_info是否能转化为<>内给定的type_info。如能则进行转化，返回Derived*对象，否则返回bad_typeid
 
    typeid运算符：
 
