@@ -100,7 +100,7 @@
 
 ​		i. 分类编址：
 
-​		<img src="F:\SummaryofComputerBasis\Computer Network\images\image-20231223192528756.png" alt="image-20231223192528756" style="zoom:20%;" />
+​		<img src=".\images\image-20231223192528756.png" alt="image-20231223192528756" style="zoom:20%;" />
 
 ​		*特殊地址：全0-本主机；全1-本地网络广播；网络号全0，主机号any-本网络任意主机；127.any-本地回环
 
