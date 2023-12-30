@@ -58,13 +58,13 @@
 
    a. 键盘
 
-   ![image-20231229222027056](C:\Users\zhy\AppData\Roaming\Typora\typora-user-images\image-20231229222027056.png)
+   ![image-20231229222027056](.\images\image-20231229222027056.png)
 
 使用计数器循环扫描键开关矩阵中的每一个键位是否按下，按下后数时器停止+1，并将计数值发送给ROM，取出该键对应的ASCII码传送给CPU
 
 ​	b. 显示器——字符显示器
 
-![image-20231229222655963](C:\Users\zhy\AppData\Roaming\Typora\typora-user-images\image-20231229222655963.png)
+![image-20231229222655963](.\images\image-20231229222655963.png)
 
 显存中(VRAM)，存放(width,height)大小的buffer，其中每个位置存放字符的ASCII码，
 
